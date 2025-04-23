@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gold Pawning System</title>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';">
     <link rel="stylesheet" href="styles/styles.css">
 </head>
+
 <body>
     <div class="container">
         <div class="navbar">
             <div class="logo">
-                <img src="../assets/Logo.jpg" width="55px"/>
+                <img src="../assets/Logo.jpg" width="55px" />
                 <div class="logo-tagline">Alwis Lanka</div>
             </div>
             <div>
                 <p class="date">Tue, April 22, 2025 | 01:45 AM</p>
             </div>
-            
+
         </div>
-        
+
         <div class="progress-bar">
             <div class="progress" id="progressBar" style="width: 33.33%"></div>
         </div>
-        
+
         <div class="steps">
             <div class="step active" id="step1">
                 <div class="step-number">1</div>
@@ -38,7 +41,146 @@
                 <div class="step-title">Review & Finalize</div>
             </div>
         </div>
+        <!-- Page 1: Pawning Process -->
+        <div class="page active" id="page1">
+
+            <div class="sections">
+                <div class="section">
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="grossWeight">Gross Weight (g):</label>
+                            <input type="number" id="grossWeight" step="0.01" min="0" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="netWeight">Net Weight (g):</label>
+                            <input type="number" id="netWeight" step="0.01" min="0" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="karatValue">Karat Value:</label>
+                            <input type="number" id="karatValue" step="0.1" min="0" max="24" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="articleSelect">Article Name:</label>
+                            <div class="field-container" id="articleField">
+                                <select id="articleSelect">
+                                    <option value="Necklace">Necklace</option>
+                                    <option value="Bracelet">Bracelet</option>
+                                    <option value="Ring">Ring</option>
+                                    <option value="Earrings">Earrings</option>
+                                    <option value="Pendant">Pendant</option>
+                                    <option value="Bangle">Bangle</option>
+                                    <option value="Chain">Chain</option>
+                                    <option value="custom">Custom Article...</option>
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="durationSelect">Duration:</label>
+                            <div class="field-container" id="durationField">
+                                <select id="durationSelect">
+                                    <option value="1">1 Month</option>
+                                    <option value="3">3 Months</option>
+                                    <option value="6">6 Months</option>
+                                    <option value="12">1 Year</option>
+                                    <option value="custom">Custom Duration...</option>
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="interestRate">Interest Rate (%):</label>
+                            <input type="number" id="interestRate" step="0.01" min="0" required>
+                        </div>
+
+                        <div class="form-group ">
+                            <label for="pawnValue">Value of 1 Pawn (8g) in LKR:</label>
+                            <input type="number" id="pawnValue" step="0.01" min="0" required>
+                        </div>
+
+                        <div class="form-group span-3">
+                            <label for="notes" class="optional-label">Notes:</label>
+                            <input id="notes" rows="2"
+                                placeholder="Optional note about the item"></input>
+                        </div>
+                        <div class="add-button-container">
+                            <button type="button" class="btn-next" >Add Article</button>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="section">
+                  <div class="table-section">
+                    <div class="table-container">
+                        <table id="articlesTable">
+                            <thead>
+                                <tr>
+                                    <th>Article</th>
+                                    <th>Weight</th>
+                                    <th>Karat</th>
+                                    <th>Duration</th>
+                                    <th>Due Date</th>
+                                    <th>Gold Value</th>
+                                    <th>Interest Rate (%)</th>
+                                    <th>Daily Interest</th>
+                                    <th>Total Interest</th>
+                                    <th>Approved  Loan</th>
+                                    <th>Adjusted Loan</th>
+                                    <th>Adjustment</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="articlesTableBody">
+                    
+                                <tr>
+                                    <td>Necklace</td>
+                                    <td>2</td>
+                                    <td>3 Months</td>
+                                    <td>112000</td>
+                                    <td>74.60</td>
+                                    <td>6720</td>
+                                    <td>105280</td>
+                                    <td>11000</td>
+                                    <td>6720</td>
+                                    <td>105280</td>
+                                    <td>11000</td>
+                                    <td>5000</td>
+                                    <td><button style="background-color: red; color: white;">Delete</button></td>
+                      
+                                </tr>
+                          
+                          
+                            </tbody>
+                        </table>
+                    </div>
+
+                  </div>
+
+                    <div class="action-buttons">
+                        <button type="button"  class="btn-secondary">Reset Form</button>
+                        <button type="button"  class="btn-next right-aligned" id="nextBtn"
+                            disabled>Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+
+
+
+
     </div>
-    
+
 </body>
+
 </html>
