@@ -16,6 +16,7 @@ body {
 
     background-color: var(--background-color);
     padding: 0px 20px;
+    padding-bottom: 20px;
 }
 
 .navbar {
@@ -235,11 +236,11 @@ th{
 
 .result-panel {
     margin-top: 25px;
+    background-color: var(--background-color);
     padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    border-left: 5px solid #c9a63a;
-    box-shadow: 0 2px 10px rgba(201, 166, 58, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    border-radius: 6px;
+
 }
 
 .result-row {
@@ -251,9 +252,10 @@ th{
 
 .total {
     font-weight: bold;
-    font-size: 1.1em;
-    color: #c9a63a;
+    font-size: 14px;
+    color: var(--font-color);
 }
+
 
 .action-buttons {
     display: flex;

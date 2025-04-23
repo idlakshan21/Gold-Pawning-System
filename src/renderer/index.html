@@ -106,11 +106,10 @@
 
                         <div class="form-group span-3">
                             <label for="notes" class="optional-label">Notes:</label>
-                            <input id="notes" rows="2"
-                                placeholder="Optional note about the item"></input>
+                            <input id="notes" rows="2" placeholder="Optional note about the item"></input>
                         </div>
                         <div class="add-button-container">
-                            <button type="button" class="btn-next" >Add Article</button>
+                            <button type="button" class="btn-next">Add Article</button>
                         </div>
                     </div>
 
@@ -118,62 +117,86 @@
                 </div>
 
                 <div class="section">
-                  <div class="table-section">
-                    <div class="table-container">
-                        <table id="articlesTable">
-                            <thead>
-                                <tr>
-                                    <th>Article</th>
-                                    <th>Weight</th>
-                                    <th>Karat</th>
-                                    <th>Duration</th>
-                                    <th>Due Date</th>
-                                    <th>Gold Value</th>
-                                    <th>Interest Rate (%)</th>
-                                    <th>Daily Interest</th>
-                                    <th>Total Interest</th>
-                                    <th>Approved  Loan</th>
-                                    <th>Adjusted Loan</th>
-                                    <th>Adjustment</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody id="articlesTableBody">
-                    
-                                <tr>
-                                    <td>Necklace</td>
-                                    <td>2</td>
-                                    <td>3 Months</td>
-                                    <td>112000</td>
-                                    <td>74.60</td>
-                                    <td>6720</td>
-                                    <td>105280</td>
-                                    <td>11000</td>
-                                    <td>6720</td>
-                                    <td>105280</td>
-                                    <td>11000</td>
-                                    <td>5000</td>
-                                    <td><button style="background-color: red; color: white;">Delete</button></td>
-                      
-                                </tr>
-                          
-                          
-                            </tbody>
-                        </table>
+                    <div class="table-section">
+                        <div class="table-container">
+                            <table id="articlesTable">
+                                <thead>
+                                    <tr>
+                                        <th>Article</th>
+                                        <th>Weight</th>
+                                        <th>Karat</th>
+                                        <th>Duration</th>
+                                        <th>Due Date</th>
+                                        <th>Gold Value</th>
+                                        <th>Interest Rate (%)</th>
+                                        <th>Daily Interest</th>
+                                        <th>Total Interest</th>
+                                        <th>Approved Loan</th>
+                                        <th>Adjusted Loan</th>
+                                        <th>Adjustment</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="articlesTableBody">
+
+                                    <tr>
+                                        <td>Necklace</td>
+                                        <td>2</td>
+                                        <td>3 Months</td>
+                                        <td>112000</td>
+                                        <td>74.60</td>
+                                        <td>6720</td>
+                                        <td>105280</td>
+                                        <td>11000</td>
+                                        <td>6720</td>
+                                        <td>105280</td>
+                                        <td>11000</td>
+                                        <td>5000</td>
+                                        <td><button style="background-color: red; color: white;">Delete</button></td>
+
+                                    </tr>
+                                 
+                            
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="totalLoanPanel" class="result-panel" style="display: none;">
+                        <div class="result-row total">
+                            <span>Total Gold Value:</span>
+                            <span id="totalGoldValue">LKR 0.00</span>
+                        </div>
+                        <div class="result-row total">
+                            <span>Total Interest:</span>
+                            <span id="totalInterest">LKR 0.00</span>
+                        </div>
+                        <div class="result-row total">
+                            <span>Total Calculated Loan Amount:</span>
+                            <span id="totalCalculatedLoan">LKR 0.00</span>
+                        </div>
+                        <div class="result-row total">
+                            <span>Total Adjusted Loan Amount:</span>
+                            <span id="totalAdjustedLoan">LKR 0.00</span>
+                        </div>
+                        <div class="result-row total">
+                            <span>Total Adjustment:</span>
+                            <span id="totalAdjustment">LKR 2345670.00</span>
+                        </div>
                     </div>
 
-                  </div>
-
-                    <div class="action-buttons">
-                        <button type="button"  class="btn-secondary">Reset Form</button>
-                        <button type="button"  class="btn-next right-aligned" id="nextBtn"
-                            disabled>Next</button>
-                    </div>
                 </div>
+
+                <div class="action-buttons">
+                    <button type="button" class="btn-secondary">Reset Form</button>
+                    <button type="button" class="btn-next right-aligned" id="nextBtn" disabled>Next</button>
+                </div>
+
             </div>
         </div>
 
-        
+
 
 
 
