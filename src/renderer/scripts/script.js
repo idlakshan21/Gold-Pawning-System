@@ -50,6 +50,7 @@ function setupArticleSelect() {
     });
 }
 
+
 // custom duration select function 
 function setupDurationSelect() {
     const durationSelect = document.getElementById('durationSelect');
@@ -75,8 +76,6 @@ function setupDurationSelect() {
         customDuration.value = '';
     });
 }
-
-
 
 
 

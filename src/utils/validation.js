@@ -2,7 +2,7 @@ const { z } = require('zod');
 
 const customerSchema = z.object({
     nic: z.string({ required_error: 'NIC required' })
-        .regex(/^(?:\d{9}[VvXx]|\d{12})$/, 'NIC must be 9 digits + V/X or 12 digits'),
+        .regex(/^(?:\d{9}[VvXx]|\d{12})$/, 'NIC must be 9 digits V or 12 digits'),
     customerName: z.string({ required_error: 'Name required' })
         .regex(/^[A-Za-z\s\.\-]+$/, 'Name: letters, spaces, dots, hyphens only')
         .min(2, 'Name too short (min 2 chars)')

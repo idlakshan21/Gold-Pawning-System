@@ -2,7 +2,8 @@ const Swal = require('sweetalert2');
 const { z } = require('zod');
 const config = require('../main/config');
 
-console.log(config);
+
+// console.log(config);
 
 let articles = [];
 let totalGoldValueSum = 0;
@@ -87,81 +88,6 @@ function goToPreviousPage() {
     }
 }
 
-function goToReview() {
-    const formData = {
-        customerName: document.getElementById('customerName').value.trim(),
-        address1: document.getElementById('address1').value.trim(),
-        nic: document.getElementById('nic').value.trim(),
-        phone1: document.getElementById('phone1').value.trim(),
-        phone2: document.getElementById('phone2').value.trim(),
-        email: document.getElementById('email').value.trim(),
-        gender: document.getElementById('gender').value,
-        address2: document.getElementById('address2').value.trim()
-    };
-
-    ['nic', 'customerName', 'address1', 'address2', 'phone1', 'phone2', 'email', 'gender'].forEach(id => {
-        const input = document.getElementById(id);
-        if (input) input.classList.remove('error-border');
-        const errorElement = document.getElementById(`error-${id}`);
-        if (errorElement) errorElement.remove();
-    });
-
-    const result = config.customerSchema.safeParse(formData);
-    if (result.success) {
-        document.getElementById('summary-name').textContent = formData.customerName;
-        document.getElementById('summary-gender').textContent = formData.gender;
-
-        const fullAddress = formData.address2 ? `${formData.address1}, ${formData.address2}` : formData.address1;
-        document.getElementById('summary-address').textContent = fullAddress;
-
-        document.getElementById('summary-nic').textContent = formData.nic;
-
-        let contactInfo = formData.phone1;
-        if (formData.phone2) contactInfo += `, ${formData.phone2}`;
-        if (formData.email) contactInfo += ` / ${formData.email}`;
-        document.getElementById('summary-contact').textContent = contactInfo;
-
-        const summaryTableBody = document.getElementById('summaryTableBody');
-        summaryTableBody.innerHTML = '';
-
-        articles.forEach(article => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${article.name}</td>
-                <td>${article.weight.toFixed(2)} g</td>
-                <td>${article.karat}K</td>
-                <td>${article.durationText}</td>
-                <td>${article.dueDate}</td>
-                <td>${article.interestRate}%</td>
-                <td>LKR ${article.adjustedLoan.toFixed(2)}</td>
-            `;
-            summaryTableBody.appendChild(row);
-        });
-
-        document.getElementById('summary-totalGoldValue').textContent = 'LKR ' + totalGoldValueSum.toFixed(2);
-        document.getElementById('summary-totalInterest').textContent = 'LKR ' + totalInterestSum.toFixed(2);
-        document.getElementById('summary-totalLoan').textContent = 'LKR ' + totalAdjustedLoanSum.toFixed(2);
-
-        goToNextPage();
-    } else {
-        result.error.errors.forEach(error => {
-            const field = error.path[0];
-            const input = document.getElementById(field);
-            if (input) {
-                input.classList.add('error-border');
-                let errorP = document.getElementById(`error-${field}`);
-                if (!errorP) {
-                    errorP = document.createElement('p');
-                    errorP.id = `error-${field}`;
-                    errorP.className = 'error-message';
-                    input.parentElement.appendChild(errorP);
-                }
-
-                errorP.textContent = error.message;
-            }
-        });
-    }
-}
 
 
 function getArticleName() {
@@ -427,6 +353,11 @@ function resetForm() {
     document.getElementById('notes').value = '';
     articles = [];
     updateArticlesTable();
+}
+
+
+function goToReview() {
+    config.customer();
 }
 
 document.addEventListener('DOMContentLoaded', () => {

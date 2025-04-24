@@ -184,7 +184,7 @@
                         <select id="gender">
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
-                       
+
                         </select>
                     </div>
 
@@ -209,7 +209,7 @@
                         <input type="tel" id="phone2">
                     </div>
                     <div class="form-group">
-                     
+
                     </div>
 
                     <div class="action-buttons-customer ">
@@ -219,80 +219,68 @@
                 </div>
             </div>
         </div>
-      <!-- Page 3: Review & Finalize -->
-      <div class="page" id="page3">
-        <h2 class="page-title">Review & Finalize</h2>
+
         
-        <div class="section">
-            <div class="summary-section">
-                <div class="summary-title">Customer Information</div>
-                <div class="summary-row">
-                    <div class="summary-label">Name:</div>
-                    <div class="summary-value" id="summary-name">-</div>
+        <!-- Page 3: Review & Finalize -->
+        <div class="page" id="page3">
+
+            <div class="review-container">
+                <div class="customer-details-panel">
+                    <div class="summary-section">
+                        <div class="result-row total">
+                            <span>Name:</span>
+                            <span id="summary-name"></span>
+                        </div>
+                        <div class="result-row total">
+                            <span>Gender:</span>
+                            <span id="summary-gender">-</span>
+                        </div>
+                        <div class="result-row total">
+                            <span>Address:</span>
+                            <span id="summary-address">-</span>
+                        </div>
+                        <div class="result-row total">
+                            <span>NIC:</span>
+                            <span id="summary-nic">-</span>
+                        </div>
+                        <div class="result-row total">
+                            <span>Contact:</span>
+                            <span id="summary-contact">-</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="summary-row">
-                    <div class="summary-label">Gender:</div>
-                    <div class="summary-value" id="summary-gender">-</div>
-                </div>
-                <div class="summary-row">
-                    <div class="summary-label">Address:</div>
-                    <div class="summary-value" id="summary-address">-</div>
-                </div>
-                <div class="summary-row">
-                    <div class="summary-label">NIC:</div>
-                    <div class="summary-value" id="summary-nic">-</div>
-                </div>
-                <div class="summary-row">
-                    <div class="summary-label">Contact:</div>
-                    <div class="summary-value" id="summary-contact">-</div>
-                </div>
-            </div>
-            
-            <div class="summary-section">
-                <div class="summary-title">Pawned Articles</div>
-                <table id="summaryTable">
-                    <thead>
-                        <tr>
-                            <th>Article</th>
-                            <th>Weight</th>
-                            <th>Karat</th>
-                            <th>Duration</th>
-                            <th>Due Date</th>
-                            <th>Interest Rate</th>
-                            <th>Adjusted Loan</th>
-                        </tr>
-                    </thead>
-                    <tbody id="summaryTableBody">
-                        <!-- Summary items will be added here -->
-                    </tbody>
-                </table>
-            </div>
-            
-            <div class="result-panel">
-                <div class="result-row total">
-                    <span>Total Gold Value:</span>
-                    <span id="summary-totalGoldValue">LKR 0.00</span>
-                </div>
-                <div class="result-row total">
-                    <span>Total Interest:</span>
-                    <span id="summary-totalInterest">LKR 0.00</span>
-                </div>
-                <div class="result-row total">
-                    <span>Total Loan Amount:</span>
-                    <span id="summary-totalLoan">LKR 0.00</span>
+
+
+                <div class="gold-details-panel">
+                    <div class="summary-section">
+
+                        <div class="result-row total">
+                            <span>Total Gold Value:</span>
+                            <span id="summary-totalGoldValue">LKR 0.00</span>
+                        </div>
+                        <div class="result-row total">
+                            <span>Total Interest:</span>
+                            <span id="summary-totalInterest">LKR 0.00</span>
+                        </div>
+                        <div class="result-row total total-loan">
+                            <span>Total Loan Amount:</span>
+                            <span id="summary-totalLoan">LKR 0.00</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
+
+
             <div class="action-buttons">
-                <button type="button" id="prevBtn2" class="btn-prev">Previous: Customer Details</button>
-                <button type="button" id="printReceiptBtn" class="btn-next right-aligned">Print Receipt</button>
+                <button type="button" id="prevBtn2" class="btn-secondary">Previous</button>
+                <button type="button" id="printReceiptBtn" class="btn-next">Print</button>
             </div>
         </div>
     </div>
-    </div>
     <script src="../renderer/scripts/article-pawing.js"></script>
+    <script src="../renderer/scripts/customer-details.js"></script>
     <script src="../renderer/scripts/script.js"></script>
-   
+
 </body>
 
 </html>
