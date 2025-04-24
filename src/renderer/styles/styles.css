@@ -160,19 +160,6 @@ input:focus, select:focus, textarea:focus {
     box-shadow: 0 0 0 2px rgba(201, 166, 58, 0.2);
 }
 
-.custom-input {
-    margin-top: 10px;
-}
-
-.clear-input {
-    margin-top: 8px;
-    background: transparent;
-    border: none;
-    font-size: 16px;
-    color: #999;
-    cursor: pointer;
-    align-self: flex-start;
-}
 
 .add-button-container {
     margin-top: 30px;
@@ -210,7 +197,6 @@ button:active {
 .table-container {
     overflow-x: auto;
   
-   
 }
 
 table {
@@ -278,3 +264,45 @@ th{
    width: 110px;
 }
 
+
+.field-container {
+    position: relative;
+}
+
+.field-container select,
+.field-container input[type="text"] {
+    width: 100%;
+    transition: all 0.3s ease;
+}
+.custom-input {
+    display: none; 
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.custom-input::placeholder {
+    color: #aaa;
+}
+
+.clear-input {
+    position: absolute;
+    right: 10px;
+    top: 15%;
+    background: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    color: var(--secondary-color);
+    display: none;
+    z-index: 10;
+}
+.clear-input:hover {
+    color: var(--background-color);
+    background-color: var(--yellow-color);
+}
+
+.field-container {
+    min-height: 42px; 
+}

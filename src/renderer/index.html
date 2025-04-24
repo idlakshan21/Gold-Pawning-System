@@ -18,7 +18,7 @@
                 <div class="logo-tagline">Alwis Lanka</div>
             </div>
             <div>
-                <p class="date">Tue, April 22, 2025 | 01:45 AM</p>
+                <p class="date" id="datetime">Tue, April 22, 2025 | 01:45 AM</p>
             </div>
 
         </div>
@@ -73,10 +73,10 @@
                                     <option value="Earrings">Earrings</option>
                                     <option value="Pendant">Pendant</option>
                                     <option value="Bangle">Bangle</option>
-                                    <option value="Chain">Chain</option>
                                     <option value="custom">Custom Article...</option>
                                 </select>
-
+                                <input type="text" id="customArticle" class="custom-input" placeholder="Enter custom article name...">
+                                <button type="button" class="clear-input" id="clearArticle">✕</button>
                             </div>
                         </div>
 
@@ -90,7 +90,8 @@
                                     <option value="12">1 Year</option>
                                     <option value="custom">Custom Duration...</option>
                                 </select>
-
+                                <input type="number" id="customDuration" class="custom-input" min="1" step="1" placeholder="Enter months...">
+                                <button type="button" class="clear-input" id="clearDuration">✕</button>
                             </div>
                         </div>
 
@@ -155,8 +156,8 @@
                                         <td><button style="background-color: red; color: white;">Delete</button></td>
 
                                     </tr>
-                                 
-                            
+
+
 
 
                                 </tbody>
@@ -203,7 +204,9 @@
 
 
     </div>
+    <script src="../renderer/scripts/script.js"></script>
 
 </body>
+
 
 </html>
