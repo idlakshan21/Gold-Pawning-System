@@ -2,7 +2,6 @@
   "name": "gold-pawning-system",
   "version": "1.0.0",
   "main": "src/main/main.js",
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron ."
@@ -15,6 +14,7 @@
     "axios": "^1.8.4",
     "dotenv": "^16.5.0",
     "electron": "^35.2.0",
-    "sweetalert2": "^11.19.1"
+    "sweetalert2": "^11.19.1",
+    "zod": "^3.24.3"
   }
 }

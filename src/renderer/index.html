@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
         content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';">
     <link rel="stylesheet" href="../renderer/styles/styles.css">
 </head>
+
 <body>
     <div class="container">
         <div class="navbar">
@@ -67,7 +69,8 @@
                                     <option value="Bangle">Bangle</option>
                                     <option value="custom">Custom Article...</option>
                                 </select>
-                                <input type="text" id="customArticle" class="custom-input" placeholder="Enter custom article name...">
+                                <input type="text" id="customArticle" class="custom-input"
+                                    placeholder="Enter custom article name...">
                                 <button type="button" class="clear-input" id="clearArticle">✕</button>
                             </div>
                         </div>
@@ -81,7 +84,8 @@
                                     <option value="12">1 Year</option>
                                     <option value="custom">Custom Duration...</option>
                                 </select>
-                                <input type="number" id="customDuration" class="custom-input" min="1" step="1" placeholder="Enter months...">
+                                <input type="number" id="customDuration" class="custom-input" min="1" step="1"
+                                    placeholder="Enter months...">
                                 <button type="button" class="clear-input" id="clearDuration">✕</button>
                             </div>
                         </div>
@@ -156,8 +160,139 @@
                 </div>
             </div>
         </div>
+
+
+        <!-- Page 2: Customer Details -->
+        <div class="page" id="page2">
+
+            <div class="section">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nic">NIC Number:</label>
+                        <input type="text" id="nic" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerName">Customer Name:</label>
+                        <input type="text" id="customerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="optional-label">Email:</label>
+                        <input type="email" id="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Gender:</label>
+                        <select id="gender">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                       
+                        </select>
+                    </div>
+
+
+                    <div class="form-group span-5">
+                        <label for="address1">Address 1:</label>
+                        <input type="text" id="address1" required>
+                    </div>
+
+                    <div class="form-group span-5 ">
+                        <label for="address2" class="optional-label">Address 2:</label>
+                        <input type="text" id="address2">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="phone1">Contact 1:</label>
+                        <input type="tel" id="phone1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone2" class="optional-label">Contact 2:</label>
+                        <input type="tel" id="phone2">
+                    </div>
+                    <div class="form-group">
+                     
+                    </div>
+
+                    <div class="action-buttons-customer ">
+                        <button type="button" id="btn-previous" class="btn-secondary btn-previous">Previous</button>
+                        <button type="button" id="btn-next-summary" class="btn-next">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+      <!-- Page 3: Review & Finalize -->
+      <div class="page" id="page3">
+        <h2 class="page-title">Review & Finalize</h2>
+        
+        <div class="section">
+            <div class="summary-section">
+                <div class="summary-title">Customer Information</div>
+                <div class="summary-row">
+                    <div class="summary-label">Name:</div>
+                    <div class="summary-value" id="summary-name">-</div>
+                </div>
+                <div class="summary-row">
+                    <div class="summary-label">Gender:</div>
+                    <div class="summary-value" id="summary-gender">-</div>
+                </div>
+                <div class="summary-row">
+                    <div class="summary-label">Address:</div>
+                    <div class="summary-value" id="summary-address">-</div>
+                </div>
+                <div class="summary-row">
+                    <div class="summary-label">NIC:</div>
+                    <div class="summary-value" id="summary-nic">-</div>
+                </div>
+                <div class="summary-row">
+                    <div class="summary-label">Contact:</div>
+                    <div class="summary-value" id="summary-contact">-</div>
+                </div>
+            </div>
+            
+            <div class="summary-section">
+                <div class="summary-title">Pawned Articles</div>
+                <table id="summaryTable">
+                    <thead>
+                        <tr>
+                            <th>Article</th>
+                            <th>Weight</th>
+                            <th>Karat</th>
+                            <th>Duration</th>
+                            <th>Due Date</th>
+                            <th>Interest Rate</th>
+                            <th>Adjusted Loan</th>
+                        </tr>
+                    </thead>
+                    <tbody id="summaryTableBody">
+                        <!-- Summary items will be added here -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="result-panel">
+                <div class="result-row total">
+                    <span>Total Gold Value:</span>
+                    <span id="summary-totalGoldValue">LKR 0.00</span>
+                </div>
+                <div class="result-row total">
+                    <span>Total Interest:</span>
+                    <span id="summary-totalInterest">LKR 0.00</span>
+                </div>
+                <div class="result-row total">
+                    <span>Total Loan Amount:</span>
+                    <span id="summary-totalLoan">LKR 0.00</span>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button type="button" id="prevBtn2" class="btn-prev">Previous: Customer Details</button>
+                <button type="button" id="printReceiptBtn" class="btn-next right-aligned">Print Receipt</button>
+            </div>
+        </div>
+    </div>
     </div>
     <script src="../renderer/scripts/article-pawing.js"></script>
     <script src="../renderer/scripts/script.js"></script>
+   
 </body>
+
 </html>

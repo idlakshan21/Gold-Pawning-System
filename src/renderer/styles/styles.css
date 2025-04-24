@@ -45,6 +45,7 @@ body {
     font-size: 16px;
 }
 
+
 .steps {
     display: flex;
     justify-content: space-between;
@@ -134,6 +135,11 @@ body {
 .form-group.span-3 {
     grid-column: span 2;
 }
+
+.form-group.span-5 {
+    grid-column: span 4;
+}
+
 
 label {
     margin-bottom: 6px;
@@ -344,3 +350,41 @@ th {
 .zero-adjustment-bg {
   color: var(--font-color);
 }
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-bottom: 20px;
+  
+}
+.action-buttons-customer{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+    gap: 10px;
+    height: 40px;
+
+   
+}
+
+.optional-label::after {
+    content: ' (Optional)';
+    font-weight: normal;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.error-border {
+    border: 2px solid red !important;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+    min-height: 1.5em;
+}
+
+
+

@@ -1,10 +1,6 @@
-import { app, BrowserWindow } from 'electron';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import config from './config.js';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const { app, BrowserWindow } = require('electron');
+const path = require('path');
+const config = require('./config.js');
 
 let mainWindow;
 
@@ -14,14 +10,13 @@ function createWindow() {
     height: 1000,
     frame: true,
     webPreferences: {
+     
       nodeIntegration: true,
       contextIsolation: false,
     }
   });
 
-
   mainWindow.loadFile(path.join(__dirname, '../renderer/index.html'));
-
 
   if (config.isDev) {
     mainWindow.webContents.openDevTools();

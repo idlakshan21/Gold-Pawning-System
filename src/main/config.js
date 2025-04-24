@@ -1,8 +1,9 @@
-import dotenv from 'dotenv';
+const dotenv = require('dotenv');
+const customerSchema = require('../utils/validation');
 
 dotenv.config();
 
-export default {
-  baseUrl: process.env.BASE_URL
+module.exports = {
+  baseUrl: process.env.BASE_URL,
+  customerSchema: customerSchema
 };
-
