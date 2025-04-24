@@ -1,10 +1,11 @@
 :root {
-
     --font-color: #343434;
     --background-color: #FEFEFE;
     --secondary-color: #B2B2B2;
     --yellow-color: #F2C634;
     --form-color: #F9F7F2;
+    --positive-bg: #009432;
+    --negative-bg: #dc3545;
 }
 
 body {
@@ -13,7 +14,6 @@ body {
 
 .container {
     max-width: 100%;
-
     background-color: var(--background-color);
     padding: 0px 20px;
     padding-bottom: 20px;
@@ -107,7 +107,6 @@ body {
     display: block;
 }
 
-
 .sections {
     display: flex;
     flex-direction: column;
@@ -119,9 +118,7 @@ body {
     padding: 20px;
     border-radius: 8px;
     border: 1px solid var(--secondary-color);
-   
 }
-
 
 .form-grid {
     display: grid;
@@ -160,7 +157,6 @@ input:focus, select:focus, textarea:focus {
     box-shadow: 0 0 0 2px rgba(201, 166, 58, 0.2);
 }
 
-
 .add-button-container {
     margin-top: 30px;
     text-align: right;
@@ -193,10 +189,8 @@ button:active {
     border-radius: 6px;
 }
 
-
 .table-container {
     overflow-x: auto;
-  
 }
 
 table {
@@ -211,14 +205,13 @@ th, td {
     color: var(--font-color);
 }
 
-td{
+td {
     border-bottom: 1px solid var(--background-color) !important;
 }
 
-th{
+th {
     font-weight: 500;
 }
-
 
 .result-panel {
     margin-top: 25px;
@@ -226,7 +219,6 @@ th{
     padding: 20px;
     border: 1px solid rgba(0, 0, 0, 0.4);
     border-radius: 6px;
-
 }
 
 .result-row {
@@ -242,7 +234,6 @@ th{
     color: var(--font-color);
 }
 
-
 .action-buttons {
     display: flex;
     justify-content: flex-end;
@@ -256,14 +247,13 @@ th{
     color: var(--font-color);
 }
 
-.btn-secondary:hover{
+.btn-secondary:hover {
     background-color: var(--background-color);
 }
 
 .btn-next {
-   width: 110px;
+    width: 110px;
 }
-
 
 .field-container {
     position: relative;
@@ -274,14 +264,16 @@ th{
     width: 100%;
     transition: all 0.3s ease;
 }
+
 .custom-input {
-    display: none; 
+    display: none;
     position: absolute;
     top: 0px;
     left: 0;
     width: 100%;
     height: 100%;
 }
+
 .custom-input::placeholder {
     color: #aaa;
 }
@@ -298,11 +290,57 @@ th{
     display: none;
     z-index: 10;
 }
+
 .clear-input:hover {
     color: var(--background-color);
     background-color: var(--yellow-color);
 }
 
 .field-container {
-    min-height: 42px; 
+    min-height: 42px;
+}
+
+.adjustable-interest {
+    width: 90px;
+    padding: 5px;
+}
+
+.positive-adjustment-bg {
+    background-color: var(--positive-bg);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 12px;
+    display: inline-block;
+    width: 90px;
+    text-align: center;
+}
+
+.negative-adjustment-bg {
+    background-color: var(--negative-bg);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 12px;
+    display: inline-block;
+    width: 90px;
+    text-align: center;
+}
+
+.zero-adjustment-bg {
+    padding: 5px 10px;
+    border-radius: 4px;
+    display: inline-block;
+    width: 80px;
+    text-align: center;
+}
+
+.positive-adjustment {
+ color: var(--positive-bg);
+}
+
+.negative-adjustment {
+ color: var(--negative-bg);
+}
+
+.zero-adjustment-bg {
+  color: var(--font-color);
 }
