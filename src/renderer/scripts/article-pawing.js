@@ -2,8 +2,8 @@ const Swal = require('sweetalert2');
 const { z } = require('zod');
 const config = require('../main/config');
 
+ console.log(config);
 
-// console.log(config);
 
 let articles = [];
 let totalGoldValueSum = 0;
@@ -61,6 +61,17 @@ function updateProgressBar() {
 }
 
 function goToNextPage() {
+    // if (articles.length === 0) {
+    //     Swal.fire({
+    //         title: 'Invalid Input',
+    //         text: 'Please add at least one article before proceeding.',
+    //         icon: 'error',
+    //         confirmButtonColor: '#d33',
+    //         confirmButtonText: 'OK'
+    //     });
+    //     return;
+    // }
+
     if (currentPage < 3) {
         document.getElementById('page' + currentPage).classList.remove('active');
         document.getElementById('step' + currentPage).classList.remove('active');
@@ -356,10 +367,70 @@ function resetForm() {
 }
 
 
-function goToReview() {
-    config.customer();
-}
+async function goToReview() {
+    const formData = {
+        customerName: document.getElementById('customerName').value.trim(),
+        address1: document.getElementById('address1').value.trim(),
+        nic: document.getElementById('nic').value.trim(),
+        phone1: document.getElementById('phone1').value.trim(),
+        phone2: document.getElementById('phone2').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        gender: document.getElementById('gender').value,
+        address2: document.getElementById('address2').value.trim()
+    };
 
+    ['nic', 'customerName', 'address1', 'address2', 'phone1', 'phone2', 'email', 'gender'].forEach(id => {
+        const input = document.getElementById(id);
+        if (input) input.classList.remove('error-border');
+        const errorElement = document.getElementById(`error-${id}`);
+        if (errorElement) errorElement.remove();
+    });
+
+    const result = config.customer.safeParse(formData);
+    if (result.success) {
+        const saveSuccessful = await saveCustomer(formData);
+        
+        if (!saveSuccessful) {
+            return;
+        }
+
+        document.getElementById('summary-name').textContent = formData.customerName;
+        document.getElementById('summary-gender').textContent = formData.gender;
+
+        const fullAddress = formData.address2 ? `${formData.address1}, ${formData.address2}` : formData.address1;
+        document.getElementById('summary-address').textContent = fullAddress;
+
+        document.getElementById('summary-nic').textContent = formData.nic;
+
+        let contactInfo = formData.phone1;
+        if (formData.phone2) contactInfo += `, ${formData.phone2}`;
+        if (formData.email) contactInfo += ` / ${formData.email}`;
+        document.getElementById('summary-contact').textContent = contactInfo;
+
+        document.getElementById('summary-totalGoldValue').textContent = 'LKR ' + totalGoldValueSum.toFixed(2);
+        document.getElementById('summary-totalInterest').textContent = 'LKR ' + totalInterestSum.toFixed(2);
+        document.getElementById('summary-totalCalculatedValue').textContent = 'LKR ' + totalCalculatedLoanSum.toFixed(2);
+        document.getElementById('summary-totalLoan').textContent = 'LKR ' + totalAdjustedLoanSum.toFixed(2);
+
+        goToNextPage();
+    } else {
+        result.error.errors.forEach(error => {
+            const field = error.path[0];
+            const input = document.getElementById(field);
+            if (input) {
+                input.classList.add('error-border');
+                let errorP = document.getElementById(`error-${field}`);
+                if (!errorP) {
+                    errorP = document.createElement('p');
+                    errorP.id = `error-${field}`;
+                    errorP.className = 'error-message';
+                    input.parentElement.appendChild(errorP);
+                }
+                errorP.textContent = error.message;
+            }
+        });
+    }
+}
 document.addEventListener('DOMContentLoaded', () => {
     const addItemBtn = document.querySelector('.btn-next:not(#nextBtn)');
     const nextBtn = document.getElementById('nextBtn');
@@ -369,6 +440,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const articlesTableBody = document.getElementById('articlesTableBody');
     const previousBtn = document.querySelector(".btn-previous");
     const nextSummaryBtn = document.querySelector("#btn-next-summary");
+    const previousToCusBtn = document.getElementById('prevBtn2')
 
     if (addItemBtn) {
         addItemBtn.addEventListener('click', calculateAndAddItem);
@@ -390,6 +462,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (nextSummaryBtn) {
         nextSummaryBtn.addEventListener('click', goToReview);
+    } else {
+        console.log('next button not found');
+    }
+
+    if (previousToCusBtn) {
+        previousToCusBtn.addEventListener('click', goToPreviousPage);
     } else {
         console.log('next button not found');
     }
@@ -483,27 +561,37 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Articles table body not found');
     }
 
-    const fields = ['nic', 'customerName', 'address1', 'address2', 'phone1', 'phone2', 'email', 'gender'];
-    fields.forEach(id => {
-        const input = document.getElementById(id);
-        if (input) {
-            input.addEventListener(id === 'gender' ? 'change' : 'input', () => {
-                const value = id === 'gender' ? input.value : input.value.trim();
-                const result = config.customerSchema.shape[id].safeParse(value);
-                if (result.success) {
-                    input.classList.remove('error-border');
-                    const errorElement = document.getElementById(`error-${id}`);
-                    if (errorElement) errorElement.remove();
-                } else {
-                    input.classList.add('error-border');
-                    const errorElement = document.getElementById(`error-${id}`);
-                    const errorP = errorElement || document.createElement('p');
-                    errorP.id = `error-${id}`;
-                    errorP.className = 'error-message';
-                    errorP.textContent = result.error.errors[0].message;
-                    if (!errorElement) input.parentElement.appendChild(errorP);
-                }
-            });
-        }
-    });
+  const fields = ['nic', 'customerName', 'address1', 'address2', 'phone1', 'phone2', 'email', 'gender'];
+  fields.forEach(id => {
+      const input = document.getElementById(id);
+      if (input) {
+          input.addEventListener(id === 'gender' ? 'change' : 'input', () => {
+              const value = id === 'gender' ? input.value : input.value.trim();
+              
+              const testObj = { 
+                  nic: '', customerName: '', address1: '', gender: 'Male',
+                  address2: '', phone1: '', phone2: '', email: ''
+              };
+              testObj[id] = value;
+              
+              const result = config.customer.shape[id].safeParse(value);
+              
+              if (result.success) {
+                  input.classList.remove('error-border');
+                  const errorElement = document.getElementById(`error-${id}`);
+                  if (errorElement) errorElement.remove();
+              } else {
+                  input.classList.add('error-border');
+                  const errorElement = document.getElementById(`error-${id}`);
+                  const errorP = errorElement || document.createElement('p');
+                  errorP.id = `error-${id}`;
+                  errorP.className = 'error-message';
+                  errorP.textContent = result.error.errors[0].message;
+                  if (!errorElement) input.parentElement.appendChild(errorP);
+              }
+          });
+      }
+  });
+
+
 });

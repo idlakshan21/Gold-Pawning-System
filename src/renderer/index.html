@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gold Pawning System</title>
-    <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';">
+    
     <link rel="stylesheet" href="../renderer/styles/styles.css">
 </head>
 
@@ -259,6 +258,10 @@
                             <span id="summary-totalGoldValue">LKR 0.00</span>
                         </div>
                         <div class="result-row total">
+                            <span>Total Appoved Value:</span>
+                            <span id="summary-totalCalculatedValue">LKR 0.00</span>
+                        </div>
+                        <div class="result-row total">
                             <span>Total Interest:</span>
                             <span id="summary-totalInterest">LKR 0.00</span>
                         </div>
@@ -278,7 +281,7 @@
         </div>
     </div>
     <script src="../renderer/scripts/article-pawing.js"></script>
-    <script src="../renderer/scripts/customer-details.js"></script>
+   <script src="../api/api.js"></script>
     <script src="../renderer/scripts/script.js"></script>
 
 </body>
